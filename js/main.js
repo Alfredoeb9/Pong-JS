@@ -48,7 +48,16 @@ function callback(milliseconds) {
 
 function update(deltaTime) {
   ball.pos.x += ball.vel.x * deltaTime;
-  ball.pos.y += ball.vel.x * deltaTime;
+  ball.pos.y += ball.vel.y * deltaTime;
+
+  // detect if ball touches any corners of screen
+  if (ball.pos.x < 0 || ball.pos.x > canvas.width) {
+    ball.vel.x = -ball.vel.x;
+  }
+
+  if (ball.pos.y < 0 || ball.pos.y > canvas.height) {
+    ball.vel.y = -ball.vel.y;
+  }
 
   context.fillStyle = "#000";
   context.fillRect(0, 0, canvas.width, canvas.height);
