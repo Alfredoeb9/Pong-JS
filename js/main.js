@@ -1,5 +1,29 @@
+class Vec {
+  constructor(x = 0, y = 0) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Rectangle {
+  constructor(w, h) {
+    this.pos = new Vec();
+    this.size = new Vec(w, h);
+  }
+}
+
+class Ball extends Rectangle {
+  constructor() {
+    super(10, 10);
+    this.vel = new Vec();
+  }
+}
+
 const canvas = document.getElementById("pong");
 const context = canvas.getContext("2d");
+
+const ball = new Ball();
+console.log(ball);
 
 context.fillStyle = "#000";
 context.fillRect(0, 0, canvas.width, canvas.height);
